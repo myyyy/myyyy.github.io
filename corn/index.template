@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>good-bye</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="static/favicon.png" />
+        <link rel="stylesheet" href="static/main.css" />
+        <link rel="stylesheet" href="static/syntax.css" />
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+        <script src="http://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+        <script src="static/main.js"></script>
+    </head>
+    <body>
+        <div id="banner">
+            <a href="/">
+                <img src="static/avatar.png" title="good bye" alt="SYFY" />
+                <h1>再 见。</h1>
+            </a>
+        </div>
+        <div id="container">
+            <p id="bio">I'm a software developer and <a href="//en.wikipedia.org/">Wikipedian</a> currently studying computer science at the <a href="//illinois.edu/">University of Illinois at Urbana&ndash;Champaign</a>. I'm interested in operating systems, networking, and security, and I've done a fair bit of work with databases and parsers. Want to chat? Contact me at <a href="100714131@qq.com">100714131@qq.com</a>.</p>
+<div id="links">
+    <div>GitHub<br /><a href="//github.com/myyyy">syfy</a></div>
+    <div>DouBan<br /><a href="https://www.douban.com/people/70179092/">再見</a></div>
+    <div>WeXin<br /><a href="#">sugar_1314</a></div>
+    <div>WeiBo<br /><a href="http://weibo.com/ioney">@goobye_</a></div>
+    <!-- <div>LinkedIn<br /><a href="#">syfy</a></div> -->
+    <div>ZHU<br /><a href="http://zhihu.com/people/goo-bye">@再见</a></div>
+</div>
+<table id="work">
+    <tr>
+        <td>
+            <h2>Projects</h2>
+            <p>A look at what I've been up to for the past few years:</p>
+            <h3>Highlights</h3>
+            <ul class="work-list">
+                
+                    <li>
+                        <a class="underlined" href="http://github.com/myyyy/ONE">ONE</a> <span class="subtitle"><i>(Python // started 2016-02)</i></span><br />
+                        <span class="subtitle">运行与服务器的一个自动保存《one》每日推荐图片与文章的爬虫程序 <a href="https://github.com/myyyy/ONE">ONE</a></span>
+                    </li>
+                
+                    <li>
+                        <a class="underlined" href="http://github.com/myyyy/wechatserver">wechatserver</a> <span class="subtitle"><i>(Python // started 2016 -06)</i></span><br />
+                        <span class="subtitle">wechat 后台服务器，用来获取Pi的数据 <a href="https://github.com/myyyy/wechatserver">wechatserver</a></span>
+                    </li>
+                
+                    <li>
+                        <a class="underlined" href="http://github.com/myyyy/tool">tool</a> <span class="subtitle"><i>(python&.. // started 2015-01至今)</i></span><br />
+                        <span class="subtitle">工作中经常用到的code的集合 <a href="https://github.com/myyyy/tool.git">tool</a></span>
+                    </li>
+                
+            </ul>
+            <h3>Other work</h3>
+            <ul class="work-list">
+                
+                    <li>
+                        <a class="underlined" href="http:////coding.net/u/sis/p/blog/git">oh-my-blog</a> <span class="subtitle"><i>(Python // started 2015-06-2016-09)</i></span><br />
+                        <span class="subtitle">编写毕业设计空闲时间倒腾出来的个人bolg。<a href="https://coding.net/u/sis/p/blog/git">blog</a></span>
+                    </li>
+                
+            </ul>
+        </td>
+        <td>
+            <h2>Posts</h2>
+            <div id="tags">
+                Tags:
+                {% for l in labels%}
+                    <span data-tag="{{l}}" class="tag">{{l}}&nbsp;<span class="subtitle">(4)</span></span>
+                {%end%}
+            </div>
+            <ul id="post-list" class="work-list">
+                {% for d in data%}
+                        <li data-tags="{{('|').join(d['_labels'])}}">
+                            {{d['updated_at'][:10]}}: 
+                            <a class="underlined" href="{{d['html_url']}}">{{d['title']}}</a><br />
+                            <!-- <span class="subtitle">{{d['body'][:10]}}...</span> -->
+                        </li>
+                {%end%}
+                <li id="null-post" data-tags="" style="display: none;"><i>No posts with these tags</i></li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<script>
+    var disqus_shortname = 'syfy';
+    var disqus_title = 'Home';
+    var disqus_url = 'https://byetimes.com/';
+    var disqus_developer = 1;
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
+    }());
+</script>
+
+            <div id="footer">
+                <p>Copyright &copy; 2011&ndash;2017 再&nbsp;见 &bull; 
+                <a href="https://github.com/myyyy/myyyy.github.io">View&nbsp;Source</a> &bull; 
+                <!-- <a href="http://validator.w3.org/check?uri=referer">Valid&nbsp;HTML5</a> -->
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
