@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-
+import os
+import time
+import json
+import logging
+import threading
 import tornado.ioloop
 import tornado.web
-import json
 from pymongo import MongoClient
-import os
-import logging
+
 
 import tornado.options
 from tornado.options import define, options
-
+from issue_task import update_index
 
 define("port", default=8999, help="run on the given port", type=int)
 
@@ -39,9 +40,10 @@ def main():
     tornado.options.parse_command_line()
     app = Application()
     app.listen(options.port)
+    tornado.ioloop.PeriodicCallback(update_index, 60*10).start()
     logging.info('Serving HTTP on 0.0.0.0 port %d ...' % options.port)
     tornado.ioloop.IOLoop.current().start()
 
-
 if __name__ == "__main__":
     main()
+
