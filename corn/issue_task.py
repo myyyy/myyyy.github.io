@@ -12,16 +12,16 @@ def update_index():
 
     data = response.read()
     data = json.loads(data)
-    labels = []
+    labels = {}
     for d in data:
         d['_labels'] = []
         for l in d['labels']:
-            labels.append(l['name'])
+            labels.setdefault(l['name'],0)
+            labels[l['name']]+=1
             d['_labels'].append(l['name'])
-    labels = list(set(labels))
 
     loader = template.Loader(".")
-    index = loader.load("index.template").generate(data = data,labels=labels)
+    index = loader.load("index.template.html").generate(data = data,labels=labels)
     with open('index.html', "w") as f:
         f.write(index)
 if __name__ == '__main__':
