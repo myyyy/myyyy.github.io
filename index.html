@@ -1,95 +1,298 @@
----
-layout: base
-title: Home
-projects:
-    highlights:
-        - name:        ONE
-          langs:       Python 
-          url:https:   //github.com/myyyy/ONE
-          started:     2016-02
-          description: 运行与服务器的一个自动保存《one》每日推荐图片与文章的爬虫程序 <a href="https://github.com/myyyy/ONE">ONE</a> 
-        - name:        wechatserver
-          langs:       Python
-          url:https:   //github.com/myyyy/wechatserver
-          started:     2016 -06
-          description: wechat 后台服务器，用来获取Pi的数据 <a href="https://github.com/myyyy/wechatserver">wechatserver</a> 
-        - name:        tool
-          langs:       python&..
-          url:https:   //github.com/myyyy/tool.git
-          started:     2015-01至今
-          description: 工作中经常用到的code的集合 <a href="https://github.com/myyyy/tool.git">tool</a>
-    others:
-       
-        - name:        oh-my-blog
-          langs:       Python
-          started:     2015-06-2016-09
-          url:         //coding.net/u/sis/p/blog/git
-          description: 编写毕业设计空闲时间倒腾出来的个人bolg。<a href="https://coding.net/u/sis/p/blog/git">blog</a>
----
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>good-bye</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="static/favicon.png" />
+<link rel="stylesheet" href="static/main.css" />
+<link rel="stylesheet" href="static/syntax.css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+<script src="http://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+<script src="static/main.js"></script>
+</head>
+<body>
+<div id="banner">
+<a href="/">
+<img src="static/avatar.png" title="good bye" alt="SYFY" />
+<h1>再 见。</h1>
+</a>
+</div>
+<div id="container">
 <p id="bio">I'm a software developer and <a href="//en.wikipedia.org/">Wikipedian</a> currently studying computer science at the <a href="//illinois.edu/">University of Illinois at Urbana&ndash;Champaign</a>. I'm interested in operating systems, networking, and security, and I've done a fair bit of work with databases and parsers. Want to chat? Contact me at <a href="100714131@qq.com">100714131@qq.com</a>.</p>
 <div id="links">
-    <div>GitHub<br /><a href="//github.com/myyyy">syfy</a></div>
-    <div>DouBan<br /><a href="https://www.douban.com/people/70179092/">再見</a></div>
-    <div>WeXin<br /><a href="#">sugar_1314</a></div>
-    <div>WeiBo<br /><a href="http://weibo.com/ioney">@goobye_</a></div>
-    <!-- <div>LinkedIn<br /><a href="#">syfy</a></div> -->
-    <div>ZHU<br /><a href="http://zhihu.com/people/goo-bye">@再见</a></div>
+<div>GitHub<br /><a href="//github.com/myyyy">syfy</a></div>
+<div>DouBan<br /><a href="https://www.douban.com/people/70179092/">再見</a></div>
+<div>WeXin<br /><a href="#">sugar_1314</a></div>
+<div>WeiBo<br /><a href="http://weibo.com/ioney">@goobye_</a></div>
+<!-- <div>LinkedIn<br /><a href="#">syfy</a></div> -->
+<div>ZHU<br /><a href="http://zhihu.com/people/goo-bye">@再见</a></div>
 </div>
 <table id="work">
-    <tr>
-        <td>
-            <h2>Projects</h2>
-            <p>A look at what I've been up to for the past few years:</p>
-            <h3>Highlights</h3>
-            <ul class="work-list">
-                {% for project in page.projects["highlights"] %}
-                    <li>
-                        <a class="underlined" href="http://{% if project.url %}{{ project.url }}{% else %}github.com/myyyy/{{ project.name }}{% endif %}">{{ project.name }}</a> <span class="subtitle"><i>({{ project.langs }} // started {{ project.started }}{% if project.incomplete %}<span class="incomplete"> // in development</span>{% endif %})</i></span><br />
-                        <span class="subtitle">{{ project.description }}</span>
-                    </li>
-                {% endfor %}
-            </ul>
-            <h3>Other work</h3>
-            <ul class="work-list">
-                {% for project in page.projects["others"] %}
-                    <li>
-                        <a class="underlined" href="http://{% if project.url %}{{ project.url }}{% else %}github.com/myyyy/{{ project.name }}{% endif %}">{{ project.name }}</a> <span class="subtitle"><i>({{ project.langs }} // started {{ project.started }}{% if project.incomplete %}<span class="incomplete"> // in development</span>{% endif %})</i></span><br />
-                        <span class="subtitle">{{ project.description }}</span>
-                    </li>
-                {% endfor %}
-            </ul>
-        </td>
-        <td>
-            <h2>Posts</h2>
-            <div id="tags">
-                Tags:
-                {% comment %} Based on code from Christian Specht at http://stackoverflow.com/a/24744306/2712951 {% endcomment %}
-                {% capture tags %}{% for tag in site.tags %}{{ tag[1].size | plus: 10000 }}{{ tag[1].first.date | date: "%Y%m%d" }}#{{ tag[0] }}#{{ tag[1].size }}{% unless forloop.last %}|{% endunless %}{% endfor %}{% endcapture %}
-                {% assign sorted = tags | split: "|" | sort | reverse %}
-                {% for tag in sorted %}
-                    {% assign items = tag | split: "#" %}
-                    <span data-tag="{{ items[1] }}" class="tag">{{ items[1] | replace: " ", "&nbsp;" }}&nbsp;<span class="subtitle">({{ items[2] }})</span></span>
-                {% endfor %}
-            </div>
-            <ul id="post-list" class="work-list">
-                {% for post in site.posts %}
-                    <li data-tags="{{ post.tags | join: "|" }}">{{ post.date | date: "%b %-d, %Y" }}: <a class="underlined" href="{{ post.url }}">{{ post.title }}</a><br /><span class="subtitle">{{ post.description }}<br />{{ post.tags | join: ", " }} &middot; {% if post.draft %}<span class="draft">Draft</span>{% else %}<a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.id }}"></a>{% endif %}</span></li>
-                {% endfor %}
-                <li id="null-post" data-tags="" style="display: none;"><i>No posts with these tags</i></li>
-            </ul>
-        </td>
-    </tr>
+<tr>
+<td>
+<h2>Projects</h2>
+<p>A look at what I've been up to for the past few years:</p>
+<h3>Highlights</h3>
+<ul class="work-list">
+<li>
+<a class="underlined" href="http://github.com/myyyy/ONE">ONE</a> <span class="subtitle"><i>(Python // started 2016-02)</i></span><br />
+<span class="subtitle">运行与服务器的一个自动保存《one》每日推荐图片与文章的爬虫程序 <a href="https://github.com/myyyy/ONE">ONE</a></span>
+</li>
+<li>
+<a class="underlined" href="http://github.com/myyyy/wechatserver">wechatserver</a> <span class="subtitle"><i>(Python // started 2016 -06)</i></span><br />
+<span class="subtitle">wechat 后台服务器，用来获取Pi的数据 <a href="https://github.com/myyyy/wechatserver">wechatserver</a></span>
+</li>
+<li>
+<a class="underlined" href="http://github.com/myyyy/tool">tool</a> <span class="subtitle"><i>(python&.. // started 2015-01至今)</i></span><br />
+<span class="subtitle">工作中经常用到的code的集合 <a href="https://github.com/myyyy/tool.git">tool</a></span>
+</li>
+</ul>
+<h3>Other work</h3>
+<ul class="work-list">
+<li>
+<a class="underlined" href="http:////coding.net/u/sis/p/blog/git">oh-my-blog</a> <span class="subtitle"><i>(Python // started 2015-06-2016-09)</i></span><br />
+<span class="subtitle">编写毕业设计空闲时间倒腾出来的个人bolg。<a href="https://coding.net/u/sis/p/blog/git">blog</a></span>
+</li>
+</ul>
+</td>
+<td>
+<h2>Posts</h2>
+<div id="tags">
+Tags:
+
+<span data-tag="数据分析" class="tag">数据分析&nbsp;<span class="subtitle">(4)</span></span>
+
+<span data-tag="mongo" class="tag">mongo&nbsp;<span class="subtitle">(4)</span></span>
+
+<span data-tag="个人" class="tag">个人&nbsp;<span class="subtitle">(4)</span></span>
+
+<span data-tag="python" class="tag">python&nbsp;<span class="subtitle">(4)</span></span>
+
+<span data-tag="DB" class="tag">DB&nbsp;<span class="subtitle">(4)</span></span>
+
+<span data-tag="干货" class="tag">干货&nbsp;<span class="subtitle">(4)</span></span>
+
+<span data-tag="机器学习" class="tag">机器学习&nbsp;<span class="subtitle">(4)</span></span>
+
+<span data-tag="Spark" class="tag">Spark&nbsp;<span class="subtitle">(4)</span></span>
+
+</div>
+<ul id="post-list" class="work-list">
+
+<li data-tags="">
+2019-07-05:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/94">前后端分离,单点登陆实现方式</a><br />
+<!-- <span class="subtitle">![单点登陆](ht...</span> -->
+</li>
+
+<li data-tags="">
+2019-05-06:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/93">记一次 Spark:Executor heartbeat timed out after</a><br />
+<!-- <span class="subtitle">运行spark 任务...</span> -->
+</li>
+
+<li data-tags="干货">
+2019-04-18:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/92">记一次idea编辑器 alt+enter 不能工作的bug</a><br />
+<!-- <span class="subtitle"># 究极原因
+`...</span> -->
+</li>
+
+<li data-tags="">
+2019-04-12:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/91">CCO协议库</a><br />
+<!-- <span class="subtitle">免费的CC0版权图库...</span> -->
+</li>
+
+<li data-tags="Spark">
+2019-04-03:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/90">spark优化指南</a><br />
+<!-- <span class="subtitle">### 调优概述
+...</span> -->
+</li>
+
+<li data-tags="数据分析">
+2019-04-10:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/89">Hive 常用语法汇总</a><br />
+<!-- <span class="subtitle">## Hive 常用...</span> -->
+</li>
+
+<li data-tags="个人">
+2019-03-21:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/88">自我认知</a><br />
+<!-- <span class="subtitle"># 排难 Resto...</span> -->
+</li>
+
+<li data-tags="">
+2019-01-29:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/87">ubuntu 切换bash</a><br />
+<!-- <span class="subtitle">#先看看是用的哪个 ...</span> -->
+</li>
+
+<li data-tags="python">
+2019-03-21:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/86">深入理解 Python 异步编程(上) - Earendil - 博客园</a><br />
+<!-- <span class="subtitle">https://ww...</span> -->
+</li>
+
+<li data-tags="干货">
+2019-03-21:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/85">点赞，回复，关注系统的设计</a><br />
+<!-- <span class="subtitle">https://bl...</span> -->
+</li>
+
+<li data-tags="Spark">
+2019-03-21:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/84">scala黑魔法</a><br />
+<!-- <span class="subtitle">1.  val po...</span> -->
+</li>
+
+<li data-tags="">
+2018-12-09:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/83">中国省市经纬度</a><br />
+<!-- <span class="subtitle">id	    行政编...</span> -->
+</li>
+
+<li data-tags="">
+2018-10-30:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/82">一些个人化的IDE配置</a><br />
+<!-- <span class="subtitle"># vscode
+...</span> -->
+</li>
+
+<li data-tags="python">
+2019-03-21:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/81">Supervisor捕获不到python的Print</a><br />
+<!-- <span class="subtitle">部署项目因为要记录文...</span> -->
+</li>
+
+<li data-tags="机器学习">
+2018-10-19:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/80">机器学习的一些概念</a><br />
+<!-- <span class="subtitle">1. 有监督学习，无...</span> -->
+</li>
+
+<li data-tags="数据分析">
+2018-12-03:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/79">大数据常见错误收集器</a><br />
+<!-- <span class="subtitle">
+1. java....</span> -->
+</li>
+
+<li data-tags="">
+2018-09-30:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/78">一些网址</a><br />
+<!-- <span class="subtitle">
+[关于ml](h...</span> -->
+</li>
+
+<li data-tags="数据分析">
+2018-10-02:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/77">数据挖掘入门三宝</a><br />
+<!-- <span class="subtitle"># 入门3链接:
+...</span> -->
+</li>
+
+<li data-tags="数据分析">
+2018-08-31:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/76">数据挖掘之：构建贷款违约预测模型</a><br />
+<!-- <span class="subtitle">&gt; [Lending...</span> -->
+</li>
+
+<li data-tags="数据分析">
+2019-06-04:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/75">panda:过滤，筛选数据</a><br />
+<!-- <span class="subtitle">## 从df中筛选在...</span> -->
+</li>
+
+<li data-tags="DB">
+2018-08-27:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/74">Hive 常见问题记录</a><br />
+<!-- <span class="subtitle">## 1.报错：Op...</span> -->
+</li>
+
+<li data-tags="">
+2018-08-22:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/73">HIve:LanguageManual UDF</a><br />
+<!-- <span class="subtitle">&gt; [Manual ...</span> -->
+</li>
+
+<li data-tags="python">
+2019-03-21:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/72">python 解决跨域问题</a><br />
+<!-- <span class="subtitle"># django  ...</span> -->
+</li>
+
+<li data-tags="Spark">
+2018-08-03:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/71">Spark 编程中遇到的问题记录</a><br />
+<!-- <span class="subtitle">1.     rdd...</span> -->
+</li>
+
+<li data-tags="">
+2018-07-30:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/70">复习:RPC框架理解</a><br />
+<!-- <span class="subtitle">&gt; 通俗的来说，RP...</span> -->
+</li>
+
+<li data-tags="python">
+2018-03-16:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/69">Python Matplotlib 绘图</a><br />
+<!-- <span class="subtitle">
+最近因为项目需要...</span> -->
+</li>
+
+<li data-tags="python">
+2018-03-16:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/68">利用Python进行图像与验证码识别</a><br />
+<!-- <span class="subtitle">准备工作
+
+  ...</span> -->
+</li>
+
+<li data-tags="python">
+2018-03-16:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/67">Python的PIL库实现验证码图片</a><br />
+<!-- <span class="subtitle"> 现在的网页中，为了...</span> -->
+</li>
+
+<li data-tags="mongo">
+2018-03-16:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/66"> Mongodb分页函数</a><br />
+<!-- <span class="subtitle">
+mongoDB分...</span> -->
+</li>
+
+<li data-tags="python">
+2018-03-16:
+<a class="underlined" href="https://github.com/myyyy/myyyy.github.io/issues/65">python Gevent – 高性能的Python并发框架</a><br />
+<!-- <span class="subtitle">话说gevent也没...</span> -->
+</li>
+
+<li id="null-post" data-tags="" style="display: none;"><i>No posts with these tags</i></li>
+</ul>
+</td>
+</tr>
 </table>
 <script>
-    var disqus_shortname = 'syfy';
-    var disqus_title = '{{ page.title }}';
-    var disqus_url = '{{ site.url }}{{ page.url }}';
-    var disqus_developer = 1;
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
-    }());
+var disqus_shortname = 'syfy';
+var disqus_title = 'Home';
+var disqus_url = 'https://byetimes.com/';
+var disqus_developer = 1;
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
+}());
 </script>
+<div id="footer">
+<p>Copyright &copy; 2011&ndash;2017 再&nbsp;见 &bull;
+<a href="https://github.com/myyyy/myyyy.github.io">View&nbsp;Source</a> &bull;
+<!-- <a href="http://validator.w3.org/check?uri=referer">Valid&nbsp;HTML5</a> -->
+</p>
+</div>
+</div>
+</body>
+</html>
